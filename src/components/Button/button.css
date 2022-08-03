@@ -1,0 +1,7 @@
+button {
+	background-color: var(--main-bg-color);
+	color: var(--main-font-color);
+	border: var(--main-font-color) solid 1px;
+
+	margin: 5px;
+}

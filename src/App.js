@@ -1,58 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { useState } from "react";
+
+import "./App.css";
+import Task from "./components/Task/Task";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+	const [worker, setWorker] = useState(0);
+	const [machine, setMachine] = useState(0);
+	const [add, setAdd] = useState(0);
+
+	const [money, setMoney] = useState(100);
+	const [fame, setFame] = useState(0);
+
+	return (
+		<div className="App">
+			<div className="stats-panel">
+				<h2>Stats</h2>
+				<div className="stat-group">
+					<span>Geld: </span>
+					<span>{money}</span>
+				</div>
+				<div className="stat-group">
+					<span>Bekanntheit: </span>
+					<span>{fame}</span>
+				</div>
+			</div>
+			<div className="row">
+				<div>Zahl die Aufsteigt {worker}</div>
+				<div>Zahl die Aufsteigt {machine}</div>
+				<div>Zahl die Aufsteigt 3</div>
+			</div>
+			<div className="row"></div>
+			<div className="row">
+				<Task
+					name="Arbeiter"
+					description="eingestellt"
+					cost="15"
+					costCurrency="Geld"
+					currencyNeeded={money}
+					payCost={setMoney}
+					setProduced={setMoney}
+					mathFormula="Geld"
+				/>
+				<Task
+					name="Sacrifiece Stone"
+					description="geopfert"
+					cost="10"
+					costCurrency="Arbeiter"
+					currencyNeeded={worker}
+					payCost={setWorker}
+					setProduced={setFame}
+					mathFormula="Bekanntheit"
+				/>
+				<Task
+					name="Werbung"
+					description="geschaltet"
+					cost="100"
+					costCurrency="Geld"
+					currencyNeeded={money}
+					payCost={setMoney}
+					setProduced={setFame}
+					mathFormula="Geld"
+				/>
+			</div>
+		</div>
+	);
 }
 
 export default App;
